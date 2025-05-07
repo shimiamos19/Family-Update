@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>עדכון משפחתי זמין</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            max-width: 400px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 16px;
+        }
+        .changes {
+            text-align: right;
+            margin: 20px 0;
+            font-size: 14px;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        button {
+            background-color: #0078D7;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        #progressContainer {
+            margin-top: 20px;
+            display: none;
+        }
+        #ultrasoundImage {
+            display: none;
+            max-width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>עדכון משפחתי זמין</h1>
+        <p>גרסה 2.0 תתחיל בהורדה...</p>
+        <div class="changes">
+            <p>• נוספה ישות חדשה למשפחה<br>
+            • נדרשת השקעה של עגלת תינוק<br>
+            • תאריך שחרור: פברואר 2026<br><br>
+            האם ברצונך להמשיך בעדכון?</p>
+        </div>
+        <button onclick="startUpdate()">כן</button>
+        <button onclick="startUpdate()">בהחלט כן</button>
+        <div id="progressContainer">
+            <progress id="progressBar" value="0" max="100"></progress>
+        </div>
+        <img id="ultrasoundImage" src="ultrasound.jpg" alt="תמונת אולטרסאונד">
+    </div>
+
+    <script>
+        function startUpdate() {
+            document.getElementById('progressContainer').style.display = 'block';
+            let progress = document.getElementById('progressBar');
+            let image = document.getElementById('ultrasoundImage');
+            let value = 0;
+            let interval = setInterval(() => {
+                value++;
+                progress.value = value;
+                if (value >= 100) {
+                    clearInterval(interval);
+                    image.style.display = 'block';
+                }
+            }, 150);
+        }
+    </script>
+</body>
+</html>
